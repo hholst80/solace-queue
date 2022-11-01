@@ -20,7 +20,7 @@ cat > "$PARAMETERS" <<EOF
 }
 EOF
 
-curl -s --location \
+curl --verbose --location \
   -u "${USERNAME}:${PASSWORD}" \
   --request POST \
   --header 'Content-Type:application/json' \
