@@ -1,4 +1,6 @@
-#!/bin/bash -eu -o pipefail
+#!/bin/bash
+
+set -eux -o pipefail
 
 PARAMETERS="$(mktemp)"
 OUTFILE="$(mktemp)"
