@@ -1,15 +1,30 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: solace-queue
+description: "create a queue"
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  endpoint:
+    description: Base path to the config API
     required: true
-    default: 'World'
+  vpnname:
+    description: Message VPN Name
+    required: true
+  username:
+    description: Management Username
+    required: true
+  password:
+    description: Management Password
+    required: true
+  queuename:
+    description: Queue Name
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  env:
+    ENDPOINT: "${{ inputs.endpoint }}"
+    VPNNAME: "${{ inputs.vpnname }}"
+    USERNAME: "${{ inputs.username }}"
+    PASSWORD: "${{ inputs.password }}"
+    QUEUENAME: "${{ inputs.queuename }}"
