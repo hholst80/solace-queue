@@ -22,26 +22,23 @@ EOF
 
 curl --verbose --location \
   -u "${USERNAME}:${PASSWORD}" \
-  --request POST \
-  --header 'Content-Type:application/json' \
+  --header 'content-type:application/json' \
   --data-binary @"$PARAMETERS" \
   --write-out '%{http_code}' \
   -o "$OUTFILE" \
   "${ENDPOINT}/msgVpns/${VPNNAME}/queues?select=queueName,msgVpnName" | {
     read -r RESPONSE
-    echo "response=$RESPONSE" > $GITHUB_OUTPUT
+    # echo "response=$RESPONSE" > $GITHUB_OUTPUT
     case "$RESPONSE" in
       200)  echo "HTTP response status code 200: queue successfully created"
         exit 0
         ;; 
       400) echo "HTTP response status code 400: queue already exists"
-        exit 1
         ;;
       401) echo "HTTP response status code 401: authorization Failed"
-        exit 1
         ;;
       *) echo "HTTP response status code $RESPONSE: unknown"
-        exit 1
         ;;
     esac
+    exit 1
   }

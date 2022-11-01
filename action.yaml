@@ -1,5 +1,5 @@
 name: solace-queue
-description: "create a queue"
+description: create a queue
 inputs:
   endpoint:
     description: Base path to the config API
@@ -16,12 +16,12 @@ inputs:
   queuename:
     description: Queue Name
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+#outputs:
+#  time: # id of output
+#    description: 'The time we greeted you'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   env:
     ENDPOINT: "${{ inputs.endpoint }}"
     VPNNAME: "${{ inputs.vpnname }}"
