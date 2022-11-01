@@ -10,7 +10,7 @@ trap "rm -f $PARAMETERS $OUTFILE" EXIT
 cat > "$PARAMETERS" <<EOF
 {
     "accessType": "non-exclusive",
-    "queueName": "$QUEUE_NAME",
+    "queueName": "$QUEUENAME",
     "permission": "read-only",
     "ingressEnabled": true,
     "egressEnabled": true,
