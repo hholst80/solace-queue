@@ -13,7 +13,5 @@ jobs:
           endpoint: https://mr-connection-f3ix458uixl.messaging.solace.cloud:943/SEMP/v2/config
           vpnname: hholst-aws-fra-eks
           username: hholst-aws-fra-eks-admin
-          password: 5kqmok678k76ii0l0rc50nmg6g
+          password: "${{ secrets.PASSWORD }}"
           queuename: hello
-      - name: echo the HTTP response code
-        run: echo "The response was ${{ steps.create.outputs.response }}"
