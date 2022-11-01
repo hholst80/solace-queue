@@ -1,15 +1,18 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  create:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: create a queue called test
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: Create a queue called hello
+        id: create
         uses: hholst80/solace-queue@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          endpoint: https://mr-connection-f3ix458uixl.messaging.solace.cloud:943/SEMP/v2/config
+          vpnname: hholst-aws-fra-eks
+          username: hholst-aws-fra-eks-admin
+          password: 5kqmok678k76ii0l0rc50nmg6g
+          queuename: hello
+      - name: echo the HTTP response code
+        run: echo "The response was ${{ steps.create.outputs.response }}"
