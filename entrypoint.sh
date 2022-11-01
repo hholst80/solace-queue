@@ -24,7 +24,7 @@ curl --verbose --location \
   -u "${USERNAME}:${PASSWORD}" \
   --header 'content-type:application/json' \
   --data-binary @"$PARAMETERS" \
-  --write-out '%{http_code}' \
+  --write-out '%{http_code}\n' \
   -o "$OUTFILE" \
   "${ENDPOINT}/msgVpns/${VPNNAME}/queues?select=queueName,msgVpnName" | {
     read -r RESPONSE
