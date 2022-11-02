@@ -1,3 +1,5 @@
+name: Deploy queue
+
 on: 
   workflow_dispatch: {}
 
